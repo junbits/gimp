@@ -23,11 +23,28 @@ Image.add_layer(layer)
 Colorは *_CHANNEL定数
 ```python
 channel = gimp.Channel(Image, Name, Width, Height, Alpha, Color)
+
+Image.add_channel(channel)
 ```
 
 ## 表示ウィンドウを作成する
 指定された画像の新しい表示ウィンドウを作成
 ```python
 gimp.Display(Image)
+```
+
+## カラーパレットの操作
+```python
+#RGB形式の現在の背景色を含む3タプル
+gimp.get_background()
+
+#RGB形式の現在の前景色を含む3タプル
+gimp.get_foreground()
+
+#背景色を設定
+gimp.set_background(Red, Green, Blue)
+
+#前景色を設定
+gimp.set_foreground(Red, Green, Blue)
 ```
 
