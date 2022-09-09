@@ -44,16 +44,65 @@ main()
 指定された寸法とタイプを作成(type = RGB or GRAY or INDEXED)
 ```python
 # 画像を作成
-gimp.Image(Width, Height, Color_type)
+img = gimp.Image(Width, Height, Color_type)
+
+# Property----------------------------------------
+
+# 画像のファイル名 or None
+img.filename
+
+# 画像の幅
+img.width
+# 画像の高さ
+img.height
+
+# フローティング選択レイヤー or None
+img.floating_selection
+
+# 画像のレイヤーリスト
+img.layers
+
+# 画像のチャンネルリスト
+img.channels
+
+# 画像の選択マスク
+img.selection
 
 # アクティブなチャンネル
-Image.active_channel
+img.active_channel
 
 # アクティブなレイヤー
-Image.active_layer
+img.active_layer
 
 # 画像のタイプ
-Image.base_type
+img.base_type
+
+# Method ----------------------------------------
+
+# チャンネルの追加
+img.add_channel(Channel, position)
+
+# レイヤーの追加
+img.add_layer(Layer, position)
+
+# レイヤーマスクの追加
+img.add_layer_mask(Layer, Mask)
+
+# 画像のフラグを解除
+img.clean_all()
+
+# 画像の取り消しを無効にする
+img.disable_undo()
+
+# 画像の取り消しを有効にする。元に戻す
+img.enable_undo()
+
+
+
+
+
+
+
 ```
 ## レイヤー
 新しいレイヤーを作成して画像へ追加
