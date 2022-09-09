@@ -10,6 +10,36 @@ from gimpfu import *
 gimp.quit()
 ```
 
+## プラグインの作成
+```python
+#!/usr/bin/python
+
+from gimpfu import *
+#gimp.*  pdb.*  等が読み込まれる
+
+def plugin_main():
+    # ここにプラグイン実行時の処理を書く
+    pass
+
+register(
+    proc_name = "プラグインの名前",
+    blurb     = "プラグインに関する簡単な情報",
+    help      = "プラグインの詳細情報",
+    author    = "プラグインの著者",
+    copyright = "プラグインの著者",
+    date      = "作成日付",
+    label     = "メニューに表示するプラグインの名前"
+    imagetypes= "画像タイプ",
+    params    = [],           #引数
+    results   = [],           #戻り値
+    function  = plugin_name,  #関数の名前
+    menu      = "プラグインのメニューの場所"
+)
+
+main()
+
+```
+
 ## 画像
 指定された寸法とタイプを作成(type = RGB or GRAY or INDEXED)
 ```python
