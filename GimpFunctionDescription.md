@@ -1,6 +1,10 @@
-# GIMPのpython-fuの関数
+# GIMPのpython-fu -- HOWTO --
 
-## Script-fuの読み込み
+```
+[gimpfuの読込](#gimpfuの読込)
+```
+
+## gimpfuの読み込み
 ```python
 from gimpfu import *
 ```
