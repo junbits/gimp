@@ -1,7 +1,11 @@
-# GIMPのpython-fu -- HOWTO --
+# GIMPのpython-fu -- HOWTO
 
 
 [gimpfuの読込](#gimpfuの読込)
+[スクリプトの終了](#GIMPスクリプトの終了)
+[プラグインの作成](#プラグインの作成)
+[画像オブジェクト](#画像)
+
 
 ## gimpfuの読込
 ```python
