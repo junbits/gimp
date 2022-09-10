@@ -116,10 +116,13 @@ img.disable_undo()
 # 画像の取り消しを有効にする。元に戻す
 img.enable_undo()
 
+# 可視レイヤーをマージして、非可視レイヤーを削除
+img.flatten()
 
+# 指定したチャンネル定数がアクティブかどうか
+img.get_components_active(CHANNEL_CONST)
 
-
-
+#
 
 
 ```
