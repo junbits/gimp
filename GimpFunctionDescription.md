@@ -98,14 +98,45 @@ img.base_type
 
 # Method ----------------------------------------
 
+# 画像を(width, height)にリサイズし、古い内容を(x, y)に配置する
+img.resize(width, height, x, y)
+
+
 # チャンネルの追加
 img.add_channel(Channel, position)
+
+# チャンネルの削除
+img.remove_channnel(Channel)
+
+# チャンネルを上げる
+img.raise_channel(Channel)
+
+# チャンネルを下げる
+img.lower_channel(Channel)
 
 # レイヤーの追加
 img.add_layer(Layer, position)
 
+# レイヤーの削除
+img.remove_layer(Layer)
+
+# レイヤーを上げる
+img.raise_layer(Layer)
+
+# レイヤーを下げる
+img.lower_layer(Layer)
+
 # レイヤーマスクの追加
 img.add_layer_mask(Layer, Mask)
+
+# 指定されたモード(APPLY or DISCARD)でレイヤーからマスクを削除
+img.remove_layer_mask(Layer, mode)
+
+# 指定されたマージタイプを使用して、画像の可視レイヤーをマージする
+img.merge_visible_layers(MergeType)
+
+# ポイント(x, y)に表示されているレイヤー、またはレイヤーが一致していない場合はNone
+img.pick_correlate_layer(x, y)
 
 # 画像のフラグを解除
 img.clean_all()
@@ -119,11 +150,18 @@ img.enable_undo()
 # 可視レイヤーをマージして、非可視レイヤーを削除
 img.flatten()
 
-# 指定したチャンネル定数がアクティブかどうか
-img.get_components_active(CHANNEL_CONST)
+# コンポーネントがアクティブであればTrue
+# コンポーネント = *_CHANNEL定数
+img.get_components_active(component)
 
-#
+# コンポーネントが表示されていればTrue
+img.get_component_visible(component)
 
+# コンポーネントのアクティブ性を設定する
+img.set_component_active(component, active)
+
+# コンポーネントの可視性を設定する
+img.set_component_visible(component, visible)
 
 ```
 ## レイヤー
