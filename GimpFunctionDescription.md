@@ -12,6 +12,8 @@
 
 - [チャンネルオブジェクト](#チャンネル)
 
+- [描画可能オブジェクト](#描画可能)
+
 - [ディスプレイに表示](#表示ウィンドウを作成する)
 
 - [カラーパレット](#カラーパレットの操作)
@@ -60,6 +62,7 @@ main()
 ```
 
 ## 画像
+開いた画像を表すオブジェクト
 指定された寸法とタイプを作成(type = RGB or GRAY or INDEXED)
 ```python
 # 画像を作成
@@ -165,7 +168,7 @@ img.set_component_visible(component, visible)
 
 ```
 ## レイヤー
-新しいレイヤーを作成して画像へ追加
+画像のレイヤーを表すオブジェクト（汎用レイヤー）
 ```python
 # レイヤー作成
 layer = gimp.Layer(Image, Name, Width, Height, Type, Alpha, Mode)
@@ -234,7 +237,7 @@ layer.translate(x, y)
 ```
 
 ## チャンネル
-新しいチャンネルを作成して画像へ追加
+画像のカラーチャンネルを表すオブジェクト
 Colorは *_CHANNEL定数
 ```python
 # チャンネルを作成
@@ -277,6 +280,63 @@ channel.visible
 
 # チャンネルをコピーする
 channel.copy()
+
+```
+
+## 描画可能
+レイヤーとチャンネルの両方が描画可能オブジェクト
+両方のオブジェクトにたいして実行できる操作もしくは共通の属性と方法がある
+
+```python
+# Property----------------------------------------
+# ピクセルあたりのバイト数
+Drawable.bpp
+
+# 描画可能オブジェクトが色かどうか
+Drawable.is_colour
+Drawable.is_color
+Drawable.is_rgb
+
+# 描画可能オブジェクトがグレースケールかどうか
+Drawable.is_gray
+Drawable.is_grey
+
+# 描画可能オブジェクトにアルファチャンネルがあるかどうか
+Drawable.has_alpha
+
+# 描画可能オブジェクトの高さ
+Drawable.height
+
+# 描画可能オブジェクトの幅
+Drawable.width
+
+# 描画可能オブジェクトが属する画像オブジェクト
+Drawable.image
+
+# 描画可能オブジェクトがインデックス付きカラースキームを私用するかどうか
+Drawable.is_indexed
+
+# 描画可能オブジェクトの選択の境界
+Drawable.mask_bounds
+
+# 描画可能オブジェクトの名前
+Drawable.name
+
+# 描画可能オブジェクトの左上隅のオフセット
+Drawable.offsets
+
+# 描画可能オブジェクトのタイプ
+Drwaable.type
+
+# 描画可能オブジェクトが表示されているかどうか
+Drawable.visible
+
+# Method ----------------------------------------
+
+# 指定されたfill_type(*_FILL定数)で描画可能オブジェクトを塗りつぶす
+Drawable.fill(fill_type)
+
+
 
 ```
 
