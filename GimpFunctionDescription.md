@@ -72,6 +72,7 @@ img.filename
 
 # 画像の幅
 img.width
+
 # 画像の高さ
 img.height
 
@@ -98,9 +99,8 @@ img.base_type
 
 # Method ----------------------------------------
 
-# 画像を(width, height)にリサイズし、古い内容を(x, y)に配置する
+# 画像を(width, height)にリサイズし、元の画像を(x, y)に配置する
 img.resize(width, height, x, y)
-
 
 # チャンネルの追加
 img.add_channel(Channel, position)
@@ -170,8 +170,67 @@ img.set_component_visible(component, visible)
 # レイヤー作成
 layer = gimp.Layer(Image, Name, Width, Height, Type, Alpha, Mode)
 
-# レイヤーを画像に追加
-Image.add_layer(layer, position)
+# Property----------------------------------------
+
+# 適用マスクの設定
+layer.apply_mask
+
+# ピクセル当たりのバイト数
+layer.bpp
+
+# マスクの編集設定
+layer.edit_mask
+
+# レイヤーの高さ
+layer.height
+
+# レイヤーの幅
+layer.width
+
+# レイヤーが一部である画像、またはレイヤーが添付されていない場合はNone
+layer.image
+
+# このレイヤーが画像のフローティング選択かどうか
+layer.is_floating_selection
+
+# レイヤーのマスク、存在しない場合はNone
+layer.mask
+
+# レイヤーのモード
+layer.mode
+
+# レイヤーの名前
+layer.name
+
+# レイヤーの不透明度
+layer.opacity
+
+# レイヤーの保持透明度設定
+layer.preserve_transparency
+
+# Method ----------------------------------------
+
+# レイヤーにアルファコンポーネントを追加する
+layer.add_alpha()
+
+# オプションでアルファレイヤーを使用して、レイヤーのコピーを作成
+layer.copy([alpha])
+
+# 指定した型のレイヤーマスクを作成する
+layer.create_mask(type)
+
+# レイヤーを(width, height)にリサイズし、元のレイヤーを(x, y)に配置する
+layer.resize(width, height, x, y)
+
+# 指定された原点(origin)を使用してレイヤーを(width, height)にスケーリングする
+layer.scale(height, width, origin)
+
+# 画像の原点を基準にしてレイヤーのオフセットを設定する
+layer.set_offset(x, y)
+
+# レイヤーを現在の位置に対して(x, y)に移動する
+layer.translate(x, y)
+
 ```
 
 ## チャンネル
@@ -181,8 +240,44 @@ Colorは *_CHANNEL定数
 # チャンネルを作成
 channel = gimp.Channel(Image, Name, Width, Height, Alpha, Color)
 
-# 画像にチャンネルを追加
-Image.add_channel(channel, position)
+# Property----------------------------------------
+
+# チャンネルの色
+channel.colour
+channel.color
+
+# チャンネルの高さ
+channel.height
+
+# チャンネルの幅
+channel.width
+
+# チャンネルが属する画像、属していなければNone
+channel.image
+
+# チャンネルのレイヤー、存在しなければNone
+channel.layer
+
+# チャンネルのレイヤーマスク、存在しなければNone
+channel.layer_mask
+
+# チャンネルの名前
+channel.name
+
+# チャンネルの不透明度
+channel.opacity
+
+# チャンネルのマスク値
+channel.show_masked
+
+# チャンネルが表示されているかどうか
+channel.visible
+
+# Method ----------------------------------------
+
+# チャンネルをコピーする
+channel.copy()
+
 ```
 
 ## 表示ウィンドウを作成する
